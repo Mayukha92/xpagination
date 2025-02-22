@@ -44,12 +44,15 @@ export default function App() {
       <h1>Employee Data Table</h1>
       <div>
         <table>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-          </tr>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
           {getPaginatedData().map((ele, index) => (
             <tr key={index}>
               <td>{ele.id}</td>
@@ -58,6 +61,8 @@ export default function App() {
               <td>{ele.role}</td>
             </tr>
           ))}
+          </tbody>
+          
         </table>
       </div>
       <div>
@@ -65,7 +70,7 @@ export default function App() {
           Previous
         </button>
         <span>{currentPage}</span>
-        <button disabled={currentPage >= Math.ceil(employeeData.length.itemsPerPage)} onClick={handleNext}>
+        <button disabled={currentPage >= Math.ceil(employeeData.length/itemsPerPage)} onClick={handleNext}>
           Next
         </button>
       </div>
